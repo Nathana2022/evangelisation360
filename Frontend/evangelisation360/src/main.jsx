@@ -4,6 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import SignUpForm from './components/signUpForm/SignUpForm.jsx'
+import LadingPage from './components/LadingPage/ladingPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,12 @@ const router = createBrowserRouter([
   {
     path:"/SignUpForm",
     element: <SignUpForm/>
+  },
+  {
+    path:"/ladingPage",
+    element:<LadingPage/>
   }
+
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
