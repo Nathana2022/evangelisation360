@@ -24,7 +24,7 @@ const Login = () => {
   const handleSignIn = () => {
     if (phoneNumber === "0123456789" && password === "motdepasse") {
       //Authentification réussie, rediriger vers la page principale
-      history.push("/LandigPage");
+      history.push("/LadingPage");
     } else {
       //Authentification échouée, afficher un message d'erreur
       alert("Numéro de téléphone ou mot de passe incorrect");
