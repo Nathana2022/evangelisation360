@@ -4,7 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import SignUpForm from './components/signUpForm/SignUpForm.jsx'
-import LadingPage from './components/LadingPage/ladingPage.jsx'
+import LadingPage from './Pages/LadingPage.jsx'
 
 const router = createBrowserRouter([
   {

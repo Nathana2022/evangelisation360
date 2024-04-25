@@ -1,29 +1,34 @@
-import React from 'react'
+import React from "react";
 
 function ladingPage() {
   return (
-    <div class="flex items-center grid gap-4 grid-cols-2 bg-sky-500/100">
-        <div class="bg-sky-500/75 h-24 min-h-0 hover:min-h-full"></div>
+    <div className="bg-[#ECECEE] ">
+        <div className="flex mx-[5%] " >
+      <div className="w-[20%] ">SideBar</div>
+      <div className="w-[60%] ">
         <div>
-            <div ></div>
-            <div>
-                <div></div>
-                <div></div>
-                <div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
+          <h1 className="text-3xl font-bold underline">Hello world!</h1>
         </div>
-        <div>
+        <div >
+          <div></div>
+          <div></div>
+          <div>
             <div></div>
-            <div>
-                <div></div>
-                <div></div>
-            </div>
+            <div></div>
+          </div>
         </div>
+      </div>
+      <div class="w-[20%] ">
+        <div>AsideBar</div>
+        <div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
     </div>
-  )
+    </div>
+    
+  );
 }
 
-export default ladingPage
+export default ladingPage;
