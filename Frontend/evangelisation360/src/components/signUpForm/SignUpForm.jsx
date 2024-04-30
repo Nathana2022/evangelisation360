@@ -124,7 +124,7 @@ const SignUpForm = () => {
               <input type="checkbox" {...register("Terms&Conditions")} />
               Accepter les conditions d'utilisation
             </label>
-            <button type="submit">S'identifier</button>
+            <button type="submit">S'enregistrer</button>
             <div className="SignInBlock">
               <div className="SignInBlock-Member">
                 <p className="SignInBlock-Member-p">Déjà membre?</p> <Link
@@ -156,49 +156,6 @@ const SignUpForm = () => {
         </div>
       </div>
     </div>
-    // <div className="signUpForm">
-    //   <div className="image-signUpForm" style={{ width: "60%" }}>
-    //     <img src={ImageSignUpForm} alt="Image lOgin" className="imageLogin" />
-    //   </div>
-    //   <div className="formSignUpForm" style={{width:"40%"}}>
-    //     <div className="login-title-container">
-    //       <h2 className="login-title">S'inscrire</h2>
-    //
-    //     </div>
-
-    //     <form onSubmit={handleSubmit(onSubmit)}>
-    //       <InputField
-    //         type="text"
-    //         placeholder="Nom"
-    //         {...register("name", { required: true })}
-    //       />
-    //       <InputField type="text" placeholder="Prénom" />
-    //       <InputField type="text" placeholder="Téléphone" />
-    //       <InputField type="password" placeholder="Mot de passe" />
-    //       <Checkbox label="Accepter les conditions d'utilisation" />
-    //       <Button text="Créer un compte" />
-    //       <div className="">
-    //         <div className="">
-    //           <p className="">Déjà membre? </p>
-    //         </div>
-    //         <div className="">
-    //           <Link to="/Login" component={Login} className="">
-    //             SE CONNECTER
-    //           </Link>
-    //         </div>
-    //       </div>
-    //       <div className="">
-    //         <div className=""></div>
-    //         <div className="">Ou continuer avec</div>
-    //       </div>
-    //       <div className="">
-    //         <Link>
-    //           <img src={loginIconeGoogle} alt="Google" className="" />
-    //         </Link>
-    //       </div>
-    //     </form>
-    //   </div>
-    // </div>
   );
 };
 

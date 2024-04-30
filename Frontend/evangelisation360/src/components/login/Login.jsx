@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import imageLogin from "../../assets/images/login/imageLogin.png";
+import imageLogin from "../../assets/images/login/image.svg";
 import loginIconeGoogle from "../../assets/images/icones/google-icone.png";
 import  {Link} from "react-router-dom";
 import "../login/styles.css";

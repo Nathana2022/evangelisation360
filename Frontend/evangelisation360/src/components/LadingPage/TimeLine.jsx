@@ -1,10 +1,10 @@
 import React from "react";
-import PaperIcon from "../../assets/images/icones/Paper.png";
+import PaperIcon from "../../assets/images/icones/Paper.svg";
 
 export default function TimeLine() {
   return (
     <div className="w-[50%]">
-      <h1>RAPPORT STATISTIQUE DE 3 DERNIERS MOIS</h1>
+      <h1 className="text-slate-500 ">RAPPORT STATISTIQUE DE 3 DERNIERS MOIS</h1>
       <p>Ce rapport est en réel selon que les données sont disponibles</p>
       <div className="flex flex-col gap-y-[25px] ">
         <div className="flex justify-around rounded bg-white py-[30px] pl-[28px] mt-[35px]">
