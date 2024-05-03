@@ -12,3 +12,86 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+// fichier: schema.prisma
+model Role {
+  id        Int     @id @default(autoincrement())
+  nom       String
+  description String
+}
+
+model Quartier {
+  id        Int     @id @default(autoincrement())
+  nom       String
+}
+
+model Adresse {
+  id        Int     @id @default(autoincrement())
+  numero     String
+  avenue     String
+  quartierId Int
+  communeId  Int
+}
+
+model Utilisateurs {
+  id        Int     @id @default(autoincrement())
+  nom       String
+  prenom    String
+  genre     String
+  trancheAge String
+  telephone  String
+  adresseId Int
+  roleId     Int
+}
+
+model ParticipationActivite {
+  id           Int    @id @default(autoincrement())
+  utilisateursId Int
+  activiteId    Int
+}
+
+model Activite {
+  id           Int    @id @default(autoincrement())
+  nom          String
+  date         DateTime
+  heure        DateTime
+  secteurDesc  String
+  typeActiviteId Int
+}
+
+model TypeActivite {
+  id   Int    @id @default(autoincrement())
+  nom  String
+  date DateTime
+  heure DateTime
+}
+
+model Commune {
+  id           Int    @id @default(autoincrement())
+  nom          String
+  quartierId   Int
+}
+
+model Message {
+  id               Int    @id @default(autoincrement())
+  utilisateurEnvoi Int
+  utilisateurRecept Int
+  date             DateTime
+  heureMessage     DateTime
+}
+
+model Discussion {
+  id               Int    @id @default(autoincrement())
+  nom              String
+  description      String
+  dateDiscussion   DateTime
+}
+
+model EtablissementRapport {
+  id           Int    @id @default(autoincrement())
+  activiteId   Int
+  utilisateurId Int
+  date         DateTime
+  contenu      String
+}
+
