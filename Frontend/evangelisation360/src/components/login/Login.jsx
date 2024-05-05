@@ -10,7 +10,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
 const Login = () => {
-  const [phoneNumber, setPhoneNumber] = useState("abc");
+  const [telephone, setTelephone] = useState("abc");
   const [password, setPassword] = useState("");
   const history = useHistory;
 
@@ -21,26 +21,49 @@ const Login = () => {
   //   }
   // });
 
+  // const saveAuth = useMutation({
+  //   mutationFn: async (data) => {
+  //     try {
+  //       // Effectuer la requête POST vers votre backend pour la connexion
+  //       const res = await axios.post("http://localhost:3000/auth/login", data);
+        
+  //       // Gérer la réponse du serveur
+  //       if (res.status === 200) {
+  //         // Authentification réussie, rediriger l'utilisateur ou prendre d'autres actions
+  //         console.log('Authentification réussie');
+  //         console.log(res.data); // Afficher les données retournées par le serveur, comme un token d'authentification
+  //       } else {
+  //         // Authentification échouée, afficher un message d'erreur
+  //         console.error('Erreur lors de l\'authentification:', res.data.message);
+  //       }
+  //     } catch (error) {
+  //       console.error('Erreur lors de la requête:', error);
+  //     }
+  //   }
+  // });
+  
   const saveAuth = useMutation({
     mutationFn: async (data) => {
       try {
-        // Effectuer la requête POST vers votre backend pour la connexion
         const res = await axios.post("http://localhost:3000/auth/login", data);
-        
-        // Gérer la réponse du serveur
-        if (res.status === 200) {
-          // Authentification réussie, rediriger l'utilisateur ou prendre d'autres actions
-          console.log('Authentification réussie');
-          console.log(res.data); // Afficher les données retournées par le serveur, comme un token d'authentification
-        } else {
-          // Authentification échouée, afficher un message d'erreur
-          console.error('Erreur lors de l\'authentification:', res.data.message);
-        }
+        console.log(res.data); // Afficher les données retournées par le serveur en cas de succès
       } catch (error) {
         console.error('Erreur lors de la requête:', error);
+        
+        if (error.response) {
+          // Erreur provenant du serveur
+          console.error('Erreur:', error.response.data);
+        } else if (error.request) {
+          // Erreur lors de l'envoi de la requête
+          console.error('Erreur lors de la requête:', error.request);
+        } else {
+          // Autres erreurs
+          console.error('Erreur:', error.message);
+        }
       }
     }
   });
+  
   
   
   const {
