@@ -6,11 +6,42 @@ import  {Link} from "react-router-dom";
 import "../login/styles.css";
 import SignUpForm from "../signUpForm/SignUpForm";
 import useHistory from "use-history";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
 const Login = () => {
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("abc");
   const [password, setPassword] = useState("");
   const history = useHistory;
+
+  // const saveAuth = useMutation({
+  //   mutationFn: async (data) => {
+  //     console.log(data);
+  //     const res = await axios.post("http://localhost:3000/auth/login");
+  //   }
+  // });
+
+  const saveAuth = useMutation({
+    mutationFn: async (data) => {
+      try {
+        // Effectuer la requête POST vers votre backend pour la connexion
+        const res = await axios.post("http://localhost:3000/auth/login", data);
+        
+        // Gérer la réponse du serveur
+        if (res.status === 200) {
+          // Authentification réussie, rediriger l'utilisateur ou prendre d'autres actions
+          console.log('Authentification réussie');
+          console.log(res.data); // Afficher les données retournées par le serveur, comme un token d'authentification
+        } else {
+          // Authentification échouée, afficher un message d'erreur
+          console.error('Erreur lors de l\'authentification:', res.data.message);
+        }
+      } catch (error) {
+        console.error('Erreur lors de la requête:', error);
+      }
+    }
+  });
+  
   
   const {
     register,
@@ -19,16 +50,7 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-  };
-  const handleSignIn = () => {
-    if (phoneNumber === "0123456789" && password === "motdepasse") {
-      //Authentification réussie, rediriger vers la page principale
-      history.push("/LadingPage");
-    } else {
-      //Authentification échouée, afficher un message d'erreur
-      alert("Numéro de téléphone ou mot de passe incorrect");
-    }
+    saveAuth.mutateAsync(data)
   };
 
   return (
@@ -48,15 +70,13 @@ const Login = () => {
             <input
               type="text"
               placeholder="Téléphone"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              onChange={(e) => console.log(e)}
               {...register("telephone", { required: true })}
             />
             {errors.telephone && <p>Le numéro de téléphone est obligatoire</p>}
             <input
               type="password"
               placeholder="Mot de passe"
-              value={password}
               onChange={(e) => setPassword(e.target.value)}
               {...register("password", { required: true })}
             />
@@ -65,15 +85,13 @@ const Login = () => {
               <input type="checkbox" {...register("rememberMe")} />
               Se souvenir de moi
             </label>
-            <button className="text-button" type="submit" onClick={handleSignIn}>
-              S'identifier
-            </button>
-            <div></div>
+
+            <div><button type="submit">Se connecter</button></div>
             <div className="Mdpso-block">
               <div className="Mdpso-blockA">
-                <a className="Mdpso-body" href="#">
+                <Link className="Mdpso-body" href="#">
                   Mot de passe oublié?
-                </a>
+                </Link>
               </div>
             </div>
             <div className="SignInBlock">

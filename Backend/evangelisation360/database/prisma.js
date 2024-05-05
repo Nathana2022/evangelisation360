@@ -16,7 +16,7 @@ const findUserByTelephone = async (telephone) => {
 
 const findUserById = async (id) => {
   try {
-    const utilisateur = await prisma.utilisateur.findFirst({
+    const utilisateur = await prisma.utilisateurs.findFirst({
       where: {
         id,
       },

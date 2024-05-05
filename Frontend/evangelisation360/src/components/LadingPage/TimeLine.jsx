@@ -3,9 +3,9 @@ import PaperIcon from "../../assets/images/icones/Paper.svg";
 
 export default function TimeLine() {
   return (
-    <div className="w-[50%]">
-      <h1 className="text-slate-500 ">RAPPORT STATISTIQUE DE 3 DERNIERS MOIS</h1>
-      <p>Ce rapport est en réel selon que les données sont disponibles</p>
+    <div className="w-[50%]"style={{width: '100%', height: '100%', position: 'relative'}}>
+      <h1 className="text-slate-500 " style={{width: 612, height: 37, left: 0, top: 0, position: 'absolute', textAlign: 'center', color: '#15192C', fontSize: 28.16, fontFamily: 'Karla', fontWeight: '400', wordWrap: 'break-word'}}>RAPPORT STATISTIQUE DE 3 DERNIERS MOIS</h1>
+      <p style={{width: 310, height: 15, left: 151, top: 39, position: 'absolute', textAlign: 'center', color: '#92959E', fontSize: 12.67, fontFamily: 'Abel', fontWeight: '400', wordWrap: 'break-word'}}>Ce rapport est en réel selon que les données sont disponibles</p>
       <div className="flex flex-col gap-y-[25px] ">
         <div className="flex justify-around rounded bg-white py-[30px] pl-[28px] mt-[35px]">
           <div className="flex  ">

@@ -14,10 +14,11 @@ datasource db {
 }
 
 // fichier: schema.prisma
-model Role {
-  id        Int     @id @default(autoincrement())
-  nom       String
-  description String
+enum Role {
+ Public
+ Membre
+ Nouveau_Venu
+ Ame 
 }
 
 model Quartier {
@@ -40,8 +41,9 @@ model Utilisateurs {
   genre     String
   trancheAge String
   telephone  String
-  adresseId Int
-  roleId     Int
+  password   String
+  adresse String
+  role Role    
 }
 
 model ParticipationActivite {
