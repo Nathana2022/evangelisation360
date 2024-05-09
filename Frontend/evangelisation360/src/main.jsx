@@ -4,6 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import SignUpForm from './components/signUpForm/SignUpForm.jsx'
+import Login from './components/login/Login.jsx'
 import LadingPage from './Pages/LadingPage.jsx'
 import {
   useQuery,
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path:"/",
     element: <App />
+  },
+  {
+    path:"/Login",
+    element: <Login/>
   },
   {
     path:"/SignUpForm",

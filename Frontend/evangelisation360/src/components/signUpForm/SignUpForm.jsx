@@ -7,12 +7,22 @@ import Button from "./Button";
 import Checkbox from "./Checkbox";
 
 import "../signUpForm/styles.css";
-import ImageSignUpForm from "../../assets/images/signUpForm/image2.png";
+import ImageSignUpForm from "../../assets/images/signUpForm/image.svg";
 import loginIconeGoogle from "../../assets/images/icones/google-icone.png";
 import Login from "../login/Login";
 import { Link } from "react-router-dom";
 
 const SignUpForm = () => {
+  const [formaData, setFormData] = useState({
+    nom: "",
+    prenom: "",
+    genre: "masculin",
+    trancheAge: "40-50",
+    telephone: "0897736503",
+    password: "J3m5@2025",
+    adresse: "16, Avenue MULUMBA KATSHI",
+    role: "Public",
+  });
   const {
     register,
     handleSubmit,
@@ -28,7 +38,7 @@ const SignUpForm = () => {
   const confirmPassword = watch("confirmPassword", "");
 
   return (
-    <div className="login-page">
+    <div className="login-page flex flex-center">
       <div className="image-container" style={{ width: "60%" }}>
         <img src={ImageSignUpForm} alt="Image lOgin" className="imageLogin" />
       </div>
@@ -39,6 +49,30 @@ const SignUpForm = () => {
             <p className="desciption-title">Créer un compte en un clic 😉</p>
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
+            <input
+              type="text"
+              placeholder="Nom"
+              {...register("nom", { required: true, minLength: 5 })}
+            />
+            {errors.nom && errors.nom.type === "required" && (
+              <p>Le nom est obligatoire</p>
+            )}
+            {errors.nom && errors.nom.type === "minLength" && (
+              <span>Le nom doit avoir au moins 5 caractères</span>
+            )}
+
+            <input
+              type="text"
+              placeholder="Prénom"
+              {...register("prenom", { required: true, minLength: 5 })}
+            />
+            {errors.prenom && errors.prenom.type === "required" && (
+              <p>Le prénom est obligatoire</p>
+            )}
+            {errors.prenom && errors.prenom.type === "minLength" && (
+              <span>Le prénom doit avoir au moins 5 caractères</span>
+            )}
+
             <input
               type="text"
               placeholder="Prénom"
@@ -127,16 +161,12 @@ const SignUpForm = () => {
             <button type="submit">S'enregistrer</button>
             <div className="SignInBlock">
               <div className="SignInBlock-Member">
-                <p className="SignInBlock-Member-p">Déjà membre?</p> <Link
-                  to="/"
-                  className="Link-SignUp"
-                >
-                 <p> SE CONNECTER</p>
+                <p className="SignInBlock-Member-p">Déjà membre?</p>{" "}
+                <Link to="/" className="Link-SignUp">
+                  <p> SE CONNECTER</p>
                 </Link>
               </div>
-              <div className="SignInBlock-link">
-               
-              </div>
+              <div className="SignInBlock-link"></div>
             </div>
             <div className="line-block">
               <div className="line-A"></div>
