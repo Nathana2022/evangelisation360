@@ -75,8 +75,8 @@ const SignUpForm = () => {
 
             <input
               type="text"
-              placeholder="Prénom"
-              {...register("prenom", { required: true, minLength: 5 })}
+              placeholder="Genre"
+              {...register("gender", { required: true, minLength: 5 })}
             />
             {errors.prenom && errors.prenom.type === "required" && (
               <p>Le prénom est obligatoire</p>
