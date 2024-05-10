@@ -1,8 +1,17 @@
-# React + Vite
+# Évangélisation 360°
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bienvenue dans l'application Évangélisation 360° ! Cette application est conçue pour aider à gérer les activités liées à l'évangélisation, fournissant des fonctionnalités telles que l'inscription des utilisateurs, la connexion, la gestion des événements, etc.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
+
+1. **Cloner le dépôt :**
+   ```bash
+   git clone https://github.com/votre-utilisateur/evangelisation-360.git
+
+
+2. **installation des dépendances :**
+   ```bash
+    cd evangelisation-360
+    npm install

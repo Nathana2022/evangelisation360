@@ -39,7 +39,7 @@ html,
 :host {
   line-height: 1.5;
   /* 1 */
-  -webkit-text-size-adjust: 100%;
+  /* -webkit-text-size-adjust: 100%; */
   /* 2 */
   -moz-tab-size: 4;
   /* 3 */
@@ -241,7 +241,7 @@ input:where([type='reset']),
 input:where([type='submit']) {
   -webkit-appearance: button;
   /* 1 */
-  background-color: transparent;
+  background-color: teal;
   /* 2 */
   background-image: none;
   /* 2 */
