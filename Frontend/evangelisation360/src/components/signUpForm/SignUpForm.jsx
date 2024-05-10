@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 import InputField from "./InputField";
 import Button from "./Button";
 import Checkbox from "./Checkbox";
@@ -16,11 +17,11 @@ const SignUpForm = () => {
   const [formaData, setFormData] = useState({
     nom: "",
     prenom: "",
-    genre: "masculin",
-    trancheAge: "40-50",
-    telephone: "0897736503",
-    password: "J3m5@2025",
-    adresse: "16, Avenue MULUMBA KATSHI",
+    genre: "",
+    trancheAge: "",
+    telephone: "",
+    password: "",
+    adresse: "",
     role: "Public",
   });
   const {
@@ -30,8 +31,15 @@ const SignUpForm = () => {
     watch,
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
+    try{
+      const res = await axios.post("http://localhost:3000/auth/register", data)
+    } catch(error){
+      console.log(error)
+    }
+    // alert(${data.nom});
+    window.location.href ="/LadingPage"
   };
 
   const password = watch("password", "");
@@ -76,21 +84,23 @@ const SignUpForm = () => {
             <input
               type="text"
               placeholder="Genre"
-              {...register("gender", { required: true, minLength: 5 })}
+              {...register("genre", { required: true, minLength: 5 })}
             />
-            {errors.prenom && errors.prenom.type === "required" && (
-              <p>Le prénom est obligatoire</p>
-            )}
-            {errors.prenom && errors.prenom.type === "minLength" && (
-              <span>Le prénom doit avoir au moins 5 caractères</span>
+            {errors.genre && errors.genre.type === "required" && (
+              <p>Le sexe est obligatoire</p>
             )}
 
             <input
               type="text"
-              placeholder="Nom"
-              {...register("nom", { required: true })}
+              placeholder="Tranche d'Age"
+              {...register("trancheAge", { required: true })}
             />
-            {errors.nom && <p>Le nom est obligatoire</p>}
+
+            <input
+              type="text"
+              placeholder="Votre Adresse"
+              {...register("adresse", { required: true })}
+            />
 
             <input
               type="text"

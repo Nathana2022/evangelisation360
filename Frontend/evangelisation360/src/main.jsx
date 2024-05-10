@@ -13,6 +13,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import HelpPage from './Pages/HelpPage.jsx'
 
 const queryClient = new QueryClient()
 
@@ -32,7 +33,12 @@ const router = createBrowserRouter([
   {
     path:"/ladingPage",
     element:<LadingPage/>
-  }
+  },
+
+  {
+    path:"/HelpPage",
+    element:<HelpPage/>
+  },
 
 ])
 

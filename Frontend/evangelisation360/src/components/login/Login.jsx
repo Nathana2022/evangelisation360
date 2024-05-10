@@ -2,79 +2,53 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import imageLogin from "../../assets/images/login/image.svg";
 import loginIconeGoogle from "../../assets/images/icones/google-icone.png";
-import  {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../login/styles.css";
 import SignUpForm from "../signUpForm/SignUpForm";
-import useHistory from "use-history";
-import { useMutation } from "@tanstack/react-query";
+import LadingPage from "../../Pages/LadingPage";
+import HelpPage from "../../Pages/HelpPage";
 import axios from "axios";
 
 const Login = () => {
-  const [telephone, setTelephone] = useState("abc");
-  const [password, setPassword] = useState("");
-  const history = useHistory;
-
-  // const saveAuth = useMutation({
-  //   mutationFn: async (data) => {
-  //     console.log(data);
-  //     const res = await axios.post("http://localhost:3000/auth/login");
-  //   }
-  // });
-
-  // const saveAuth = useMutation({
-  //   mutationFn: async (data) => {
-  //     try {
-  //       // Effectuer la requête POST vers votre backend pour la connexion
-  //       const res = await axios.post("http://localhost:3000/auth/login", data);
-        
-  //       // Gérer la réponse du serveur
-  //       if (res.status === 200) {
-  //         // Authentification réussie, rediriger l'utilisateur ou prendre d'autres actions
-  //         console.log('Authentification réussie');
-  //         console.log(res.data); // Afficher les données retournées par le serveur, comme un token d'authentification
-  //       } else {
-  //         // Authentification échouée, afficher un message d'erreur
-  //         console.error('Erreur lors de l\'authentification:', res.data.message);
-  //       }
-  //     } catch (error) {
-  //       console.error('Erreur lors de la requête:', error);
-  //     }
-  //   }
-  // });
+  const [formData, setFormData] = useState({
+    telephone :"",
+    password : ""
+  });
   
-  const saveAuth = useMutation({
-    mutationFn: async (data) => {
+
+  const {register, handleSubmit, formState :{errors}, reset } = useForm({
+    defaultValues:formData
+  });
+  const onSubmit =  async (data) => {
       try {
-        const res = await axios.post("http://localhost:3000/auth/login", data);
+        const res = await axios.post("http://localhost:3000/auth/login", {
+          telephone: data.telephone,
+          password: data.password
+        });
+
+        if (res.status === 200) {
+          localStorage.setItem("tokenUser", JSON.stringify(res.data));
+          alert("Utilisateur connecté avec succès");
+          window.location.href ="/LadingPage" ; // Utilisez history.push pour rediriger l'utilisateur
+        }
+
         console.log(res.data); // Afficher les données retournées par le serveur en cas de succès
       } catch (error) {
-        console.error('Erreur lors de la requête:', error);
-        
+        console.error("Erreur lors de la requête:", error);
+
         if (error.response) {
           // Erreur provenant du serveur
-          console.error('Erreur:', error.response.data);
+          console.error("Erreur:", error.response.data);
         } else if (error.request) {
           // Erreur lors de l'envoi de la requête
-          console.error('Erreur lors de la requête:', error.request);
+          console.error("Erreur lors de la requête:", error.request);
         } else {
           // Autres erreurs
-          console.error('Erreur:', error.message);
+          console.error("Erreur:", error.message);
         }
       }
     }
-  });
-  
-  
-  
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const onSubmit = (data) => {
-    saveAuth.mutateAsync(data)
-  };
+  ;
 
   return (
     <div className="login-page">
@@ -83,7 +57,7 @@ const Login = () => {
       </div>
       <div className="login-container" style={{ width: "40%" }}>
         <div className="help-link">
-          <Link>Besoin d'aide?</Link>
+          <Link to={"HelpPage"}>Besoin d'aide?</Link>
         </div>
         <div className="login-form">
           <div className="login-title-container">
